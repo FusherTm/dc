@@ -24,6 +24,9 @@ class Order(Base):
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
 
     __table_args__ = (
-        CheckConstraint("status IN ('TEKLIF','SIPARIS','URETIMDE')", name="ck_orders_status"),
+        CheckConstraint(
+            "status IN ('TEKLIF','SIPARIS','URETIMDE','TESLIM EDILDI')",
+            name="ck_orders_status",
+        ),
     )
 

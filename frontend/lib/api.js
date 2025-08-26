@@ -1,7 +1,7 @@
-const API_BASE = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000';
+const API_BASE = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000/api';
 
 export async function getFinancialSummary() {
-  const res = await fetch(`${API_BASE}/products/`);
+  const res = await fetch(`${API_BASE}/finance/summary`);
   if (!res.ok) {
     throw new Error('Failed to fetch financial summary');
   }

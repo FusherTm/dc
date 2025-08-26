@@ -6,7 +6,7 @@ from pydantic import BaseModel
 
 from .order_item import OrderItemCreate, OrderItemUpdate, OrderItemPublic
 
-OrderStatus = Literal["TEKLIF", "SIPARIS", "URETIMDE"]
+OrderStatus = Literal["TEKLIF", "SIPARIS", "URETIMDE", "TESLIM EDILDI"]
 
 
 class OrderCreate(BaseModel):

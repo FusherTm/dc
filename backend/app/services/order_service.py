@@ -11,6 +11,7 @@ from app.models.order import Order
 from app.models.order_item import OrderItem
 from app.models.product import Product
 from app.schemas.order import OrderCreate, OrderUpdate
+from app.services.production_service import create_job_from_order_item
 
 DEFAULT_ORGANIZATION_ID = uuid.UUID("00000000-0000-0000-0000-000000000001")
 TAX_RATE = Decimal("0.18")
@@ -35,6 +36,8 @@ def _create_order_item(db: Session, order_id: UUID, item_in) -> Decimal:
         total_price=total_price,
     )
     db.add(order_item)
+    db.flush()
+    create_job_from_order_item(db, order_item.id)
     return total_price
 
 

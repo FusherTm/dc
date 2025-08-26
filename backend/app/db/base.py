@@ -1,28 +1,9 @@
-"""Base class for SQLAlchemy models and model imports for Alembic."""
-
+# app/db/base.py
 from sqlalchemy.orm import declarative_base
 
-
+# 1) Önce Base'i tanımla (modül import zincirinden önce hazır olsun)
 Base = declarative_base()
 
-
-# Import all model classes so that Alembic can detect them via Base.metadata
-# noqa: F401
-from app.models import (  # type: ignore  # pylint: disable=unused-import
-    Account,
-    FinancialTransaction,
-    Material,
-    Order,
-    OrderItem,
-    Organization,
-    Partner,
-    Product,
-    ProductionJob,
-    ProductionLog,
-    ProductionStation,
-    PurchaseOrder,
-    PurchaseOrderItem,
-    Role,
-    User,
-)
-
+# 2) Sonra modelleri yan-etki için içe aktar (tablolar Base.metadata'ya kaydolur)
+# Bu import, tek tek sınıf çekmez; sadece tabloların deklarasyonunun çalışması için.
+import app.models  # noqa: F401  # pylint: disable=unused-import

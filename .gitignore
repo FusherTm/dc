@@ -2,3 +2,20 @@ node_modules
 .next
 out
 .env
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# VSCode / PyCharm
+.vscode/
+.idea/
+
+# Node.js
+node_modules/
